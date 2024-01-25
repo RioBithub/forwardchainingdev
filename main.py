@@ -128,9 +128,7 @@ def main():
 
         if command == 'help':
             display_help()
-        elif command == 'list symptoms':
-            list_symptoms()
-        elif command == 'diagnose':
+            """ elif command == 'diagnose':
             user_symptoms = diagnose_for_user()
             match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
 
@@ -147,6 +145,10 @@ def main():
                       display_disease_info(disease_code)
             else:
                 print("Diagnosis berdasarkan gejala selesai.")
+        """
+        elif command == 'list symptoms':
+            list_symptoms()
+
         elif command == 'diagnoseadv':
              user_symptoms = get_user_input()
              match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
