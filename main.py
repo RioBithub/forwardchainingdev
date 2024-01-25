@@ -86,14 +86,30 @@ def display_help():
     print("\nHELP MENU:")
     print("Type 'list symptoms' to display symptom codes and descriptions.")
     print("Type 'diagnose' to start the diagnosis process.")
+    print("Type 'diagnoseadv' to start advanced diagnosis process.")
     print("Type 'exit' to quit the program.\n")
 
 def list_symptoms():
     for code, description in symptoms.items():
         print(f"{code}: {description}")
+def diagnose_for_user():
+    user_symptoms = []
+    print("Please answer with 'y' for yes or 'n' for no for the following symptoms:")
+
+    for index, (code, description) in enumerate(symptoms.items(), start=1):
+        while True:
+            response = input(f"{index}. Do you have {description}? (y/n): ").lower().strip()
+            if response in ['y', 'n']:
+                if response == 'y':
+                    user_symptoms.append(code)
+                break 
+            else:
+                print("Invalid response. Please answer with 'y' or 'n'.")
+
+    return user_symptoms
 
 def get_user_input():
-    print("\nEnter the symptom codes separated by commas (e.g., G001, G002): ")
+    print("\nEnter the symptom codes separated by commas and space (e.g., G001, G002): ")
     input_symptoms = input()
     return input_symptoms.split(', ')
 
@@ -108,26 +124,45 @@ def main():
     print("Type 'help' for options or 'exit' to quit.")
 
     while True:
-        command = input("\nWhat would you like to do? ").lower().strip()
+        command = input("\nAda yang bisa kami bantu? ").lower().strip()
 
         if command == 'help':
             display_help()
         elif command == 'list symptoms':
             list_symptoms()
         elif command == 'diagnose':
-            user_symptoms = get_user_input()
+            user_symptoms = diagnose_for_user()
             match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
 
             if match_type == "exact":
-                print("\nDiagnosis kemungkinan besar penyakit berdasarkan gejala yang dimasukkan:")
-            else:
-                print("\nInformasi penyakit yang mungkin berdasarkan gejala yang ada, silakan konsultasi dengan dokter untuk diagnosis yang lebih akurat:")
-
+                 print("\nDiagnosis kemungkinan besar penyakit berdasarkan gejala yang dimasukkan:")
             for disease_code in diagnosed_diseases:
+                 display_disease_info(disease_code)
+            else:
+                 print("\nTidak ada kecocokan yang pasti dengan gejala yang diberikan.")
+                 show_possible = input("Apakah Anda ingin melihat kemungkinan penyakit berdasarkan gejala? (y/n): ").lower()
+            if show_possible == 'y':
+                  print("\nPenyakit yang mungkin berdasarkan gejala:")
+                  for disease_code in diagnosed_diseases:
+                      display_disease_info(disease_code)
+            else:
+                print("Diagnosis berdasarkan gejala selesai.")
+        elif command == 'diagnoseadv':
+             user_symptoms = get_user_input()
+             match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
+             if match_type == "exact":
+                 print("\nDiagnosis kemungkinan besar penyakit berdasarkan gejala yang dimasukkan:")
+             for disease_code in diagnosed_diseases:
                 display_disease_info(disease_code)
-
-            if not diagnosed_diseases:
-                print("Tidak ada penyakit yang cocok dengan gejala yang dimasukkan.")
+             else:
+                print("\nTidak ada kecocokan yang pasti dengan gejala yang diberikan.")
+                show_possible = input("Apakah Anda ingin melihat kemungkinan penyakit berdasarkan gejala? (y/n): ").lower()
+             if show_possible == 'y':
+               print("\nPenyakit yang mungkin berdasarkan gejala:")
+               for disease_code in diagnosed_diseases:
+                    display_disease_info(disease_code)
+               else:
+                print("Diagnosis berdasarkan gejala selesai.")
         elif command == 'exit':
             print("Exiting the system. Goodbye!")
             break
