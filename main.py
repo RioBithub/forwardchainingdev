@@ -128,26 +128,52 @@ def main():
 
         if command == 'help':
             display_help()
-            """ elif command == 'diagnose':
-            user_symptoms = diagnose_for_user()
-            match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
 
-            if match_type == "exact":
-                 print("\nDiagnosis kemungkinan besar penyakit berdasarkan gejala yang dimasukkan:")
-            for disease_code in diagnosed_diseases:
-                 display_disease_info(disease_code)
-            else:
-                 print("\nTidak ada kecocokan yang pasti dengan gejala yang diberikan.")
-                 show_possible = input("Apakah Anda ingin melihat kemungkinan penyakit berdasarkan gejala? (y/n): ").lower()
-            if show_possible == 'y':
-                  print("\nPenyakit yang mungkin berdasarkan gejala:")
-                  for disease_code in diagnosed_diseases:
-                      display_disease_info(disease_code)
-            else:
-                print("Diagnosis berdasarkan gejala selesai.")
-        """
+            #elif command == 'diagnose':
+            #user_symptoms = diagnose_for_user()
+            #match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
+
+            #if match_type == "exact":
+            #   print("\nDiagnosis kemungkinan besar penyakit berdasarkan gejala yang dimasukkan:")
+            #for disease_code in diagnosed_diseases:
+            #     display_disease_info(disease_code)
+            #else:
+            #     print("\nTidak ada kecocokan yang pasti dengan gejala yang diberikan.")
+            #     show_possible = input("Apakah Anda ingin melihat kemungkinan penyakit berdasarkan gejala? (y/n): ").lower()
+            #if show_possible == 'y':
+            #      print("\nPenyakit yang mungkin berdasarkan gejala:")
+            #      for disease_code in diagnosed_diseases:
+            #          display_disease_info(disease_code)
+            #else:
+            #    print("Diagnosis berdasarkan gejala selesai.")
+        
         elif command == 'list symptoms':
             list_symptoms()
+
+        elif command == 'diagnose':
+            user_symptoms = []
+            print("Silakan jawab pertanyaan-pertanyaan di bawah ini untuk menginput gejala yang dirasakan.")
+            for code, description in symptoms.items():
+                response = input (f"\nApakah Anda memiliki gejala {description}? (y/n): ").lower().strip()
+                if response == 'y':
+                    user_symptoms.append(code)
+                    
+                    match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
+                    if match_type == "exact":
+                        print("\nDiagnosis kemungkinan besar penyakit berdasarkan gejala yang dimaasukkan:")
+                        for disease_code in diagnosed_diseases:
+                            display_disease_info(disease_code)
+                        break
+            else:
+                print("\nTidak ada kecocokan yang pasti dengan gejela yang diberikan.")
+                show_possible = input("Apakah Anda ingin melihat kemungkinan penyakit berdasarkan gejala? (y/n): ").lower()
+                if show_possible ==  'y':
+                    print("\nPenyakit yang mungkin berdasarkan gejala:")
+                    for disease_code in diagnosed_diseases:
+                        display_disease_info(disease_code)
+                else:
+                    print("Diagnosis berdasarkan gejala selesai.")
+        
 
         elif command == 'diagnoseadv':
              user_symptoms = get_user_input()
