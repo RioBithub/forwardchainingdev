@@ -152,9 +152,9 @@ def main():
 
         elif command == 'diagnose':
             user_symptoms = []
-            print("Silakan jawab pertanyaan-pertanyaan di bawah ini untuk menginput gejala yang dirasakan.")
+            print("Silakan jawab pertanyaan-pertanyaan di bawah ini untuk menginput gejala yang dirasakan.\n")
             for code, description in symptoms.items():
-                response = input (f"\nApakah Anda memiliki gejala {description}? (y/n): ").lower().strip()
+                response = input (f"Apakah Anda memiliki gejala {description}? (y/n): ").lower().strip()
                 if response == 'y':
                     user_symptoms.append(code)
                     
