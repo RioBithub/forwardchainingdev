@@ -173,8 +173,7 @@ def main():
                         display_disease_info(disease_code)
                 else:
                     print("Diagnosis berdasarkan gejala selesai.")
-        
-
+    
         elif command == 'diagnoseadv':
              user_symptoms = get_user_input()
              match_type, diagnosed_diseases = run_forward_chaining(user_symptoms)
