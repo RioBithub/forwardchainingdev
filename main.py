@@ -49,7 +49,9 @@ def main():
     print("""
 ***************************************************
 * Welcome to the Forward Chaining Expert System! *
-* Presented by: Alvin & The Chipmunks            *
+* Presented by:  Deva Alvyn B                    *
+*                Kasamira Anindita Q             *
+*                Ahmad Ulul A                    *
 ***************************************************
 
 This system helps you identify diseases based on symptoms.
