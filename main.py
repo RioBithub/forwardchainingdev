@@ -19,13 +19,14 @@ def diagnose_for_user():
     print("Silakan jawab dengan 'y' untuk ya, 'n' untuk tidak, atau 'x' untuk membatalkan dan kembali ke menu utama.")
     for index, (code, description) in enumerate(symptoms.items(), start=1):
         while True:
-            response = input(f"{index}. Apakah Anda mengalami {description}? (y/n/x): ").lower().strip()
+            response = input(f"{index}. Apakah Anda mengalami {description}? (y/n): ").lower().strip()
             if response == 'y':
                 user_symptoms.append(code)
                 break
             elif response == 'n':
                 break
             elif response == 'x':
+                print("\nKembali ke menu utama...")
                 return 'abort'  # Mengembalikan None untuk menandakan pembatalan
             else:
                 print("Respons tidak valid. Silakan jawab dengan 'y', 'n', atau 'x'.")
