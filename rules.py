@@ -90,3 +90,14 @@ treatments = {
     'P007': 'For vomiting, provide ORS and breast milk or lactose-free formula for infants. Seek medical care for persistent symptoms.',
     'P008': 'Cholera treatment involves ORS and antibiotics. Administer fluids and electrolytes for mild symptoms.'
 }
+
+warnings = {
+    "P001": "If your child's symptoms worsen and do not improve over a long period, see a doctor immediately.",
+    "P002": "If pneumonia symptoms do not improve at all within 48 hours, you are advised to contact your doctor again.",
+    "P003": "Do not give aspirin to children and adolescents under 16 years of age.",
+    "P004": "It is not necessary to take the child to the doctor as it may infect other children.",
+    "P005": "The main treatment given is antibiotics to fight the infection-causing bacteria. Provide your child with easy-to-swallow food and plenty of fluids.",
+    "P006": "This disease is highly contagious and includes serious infections that can be life-threatening, so it must be treated as soon as possible to prevent complications.",
+    "P007": "Immediately take to the doctor if the child has persistent vomiting and diarrhea. Children should also be taken to the doctor or hospital immediately if they are significantly dehydrated, as there may be serious underlying causes. In cases of persistent vomiting, the doctor may perform an endoscopic examination to check the gastrointestinal tract.",
+    "P008": "Administer antibiotics to reduce the number of bacteria, while shortening diarrhea due to cholera."
+}

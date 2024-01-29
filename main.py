@@ -1,6 +1,6 @@
 # main.py
 
-from rules import rules, symptoms, diseases, treatments
+from rules import rules, symptoms, diseases, treatments, warnings
 from inference_engine import run_forward_chaining
 
 def display_help():
@@ -42,7 +42,8 @@ def display_disease_info(disease_code):
     treatment_info = treatments.get(disease_code, "Informasi pengobatan tidak tersedia.")
     print(f"\nPenyakit: {disease_name}")
     print(f"Pengobatan: {treatment_info}\n")
-
+    warning_info = warnings.get(disease_code, "Tidak ada peringatan khusus.")
+    print(f"Peringatan: {warning_info}\n")
 def main():
     print("""
 ***************************************************
