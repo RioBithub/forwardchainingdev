@@ -1,5 +1,6 @@
 # rules.py
 
+# Complete dictionary buat memetakan kode aturan ke gejala dan kode penyakit yang sesuai
 rules = {
     'R1': {'symptoms': ['G001', 'G002', 'G003', 'G004', 'G005'], 'disease_code': 'P001'},
     'R2': {'symptoms': ['G001', 'G002', 'G003', 'G004', 'G006', 'G007', 'G008', 'G009', 'G010', 'G011', 'G012', 'G013'], 'disease_code': 'P002'},

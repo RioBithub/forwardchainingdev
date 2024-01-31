@@ -1,6 +1,6 @@
 # inference_engine.py
 
-# Complete dictionary buat memetakan kode aturan ke gejala dan kode penyakit yang sesuai
+
 from rules import *
 
 def run_forward_chaining(user_symptoms):
